@@ -1,8 +1,8 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 export default class ToDoManager extends LightningElement {
-    time = "8:15";
-    greeting = "Good Evening";
+    @track time = "8:15";
+    @track greeting = "Good Evening";
 
     getTime(){
         const date = new Date();
@@ -13,9 +13,14 @@ export default class ToDoManager extends LightningElement {
 
         this.setGreeting(hour);
     }
-
+ 
     connectedCallback(){
         this.getTime();
+
+        setInterval(() => {
+            this.getTime();
+            console.log("Set interval called");
+        }, 1000);
     }
 
     getHour(hour){
