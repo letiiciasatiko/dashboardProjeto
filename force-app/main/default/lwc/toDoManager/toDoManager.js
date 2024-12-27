@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import addTodo from '@salesforce/apex/ToDoController.addTodo';
+import getCurrentTodos from '@salesforce/apex/toDoController.getCurrentTodos';
 
 export default class ToDoManager extends LightningElement {
     @track time = "8:15";
@@ -19,6 +20,7 @@ export default class ToDoManager extends LightningElement {
  
     connectedCallback(){
         this.getTime();
+        this.fetchTodos();
 
         setInterval(() => {
             this.getTime();
@@ -53,12 +55,26 @@ export default class ToDoManager extends LightningElement {
         addTodo({payload : JSON.stringify(todo)})
         .then(response => {
             console.log('Item inserted sucessfully');
+            this.fetchTodos();
         })
         .catch(error => {
-            console.error('Error in inserting todo item' + JSON.stringify(error));
-        })
+            console.error('Error in inserting todo item' + error);
+        });
         // this.todos.push(todo);
         inputBox.value = "";
+    }
+
+    fetchTodos(){
+        getCurrentTodos()
+        .then(result => {
+            if(result){
+                console.log("Retrieved todos from server ", result.length);
+                this.todos = result;
+            }    
+        })
+        .catch(error => {
+            console.error("Error in fetching todos " + error);
+        });
     }
 
     get upcomingTasks(){
