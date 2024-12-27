@@ -4,6 +4,8 @@ export default class ToDoManager extends LightningElement {
     @track time = "8:15";
     @track greeting = "Good Evening";
 
+    @track todos = [];
+
     getTime(){
         const date = new Date();
         const hour = date.getHours();
@@ -19,7 +21,6 @@ export default class ToDoManager extends LightningElement {
 
         setInterval(() => {
             this.getTime();
-            console.log("Set interval called");
         }, 1000);
     }
 
@@ -28,7 +29,7 @@ export default class ToDoManager extends LightningElement {
     }
 
     getDoubleDigit(digit){
-        return digit<10 ? "0"+digit : digit; 
+        return digit<10 ? "0" + digit : digit; 
     }
 
     setGreeting(hour){
@@ -39,5 +40,18 @@ export default class ToDoManager extends LightningElement {
         } else {
             this.greeting = "Boa Noite!";
         }
+    }
+
+    addTodoHandler(){
+        const inputBox = this.template.querySelector("lightning-input");
+        const todo = {
+            todoId: this.todos.length,
+            todoName: inputBox.value,
+            done: false,
+            todoDate: new Date()
+        }
+        
+        this.todos.push(inputBox.value);
+        inputBox.value = "";
     }
 }
