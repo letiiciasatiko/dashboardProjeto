@@ -26,7 +26,12 @@
 
         <lightning-layout-item size="12">
             <div>Pendente</div>
-            <template for:each={todos} for:item="todo">
+            <template for:each={upcomingTasks} for:item="todo">
+                <c-to-do-item key={todo.todoId} todo-id={todo.todoId} todo-name={todo.todoName}></c-to-do-item>
+            </template>
+
+            <div>Completo</div>
+            <template for:each={completedTasks} for:item="todo">
                 <div class="item-class" key={todo.todoId}>
                     <span class="slds-text-heading_label">{todo.todoName}</span>
                     <lightning-button-icon icon-name="utility:check" class="slds-p-horizontal_medium" 
@@ -36,6 +41,7 @@
                     </lightning-button-icon>
                 </div>>
             </template>
+
         </lightning-layout-item>
     </lightning-layout>
 </template>

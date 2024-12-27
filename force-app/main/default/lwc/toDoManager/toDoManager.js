@@ -44,6 +44,7 @@ export default class ToDoManager extends LightningElement {
 
     addTodoHandler(){
         const inputBox = this.template.querySelector("lightning-input");
+
         const todo = {
             todoId: this.todos.length,
             todoName: inputBox.value,
@@ -51,7 +52,19 @@ export default class ToDoManager extends LightningElement {
             todoDate: new Date()
         }
         
-        this.todos.push(inputBox.value);
+        this.todos.push(todo);
         inputBox.value = "";
+    }
+
+    get upcomingTasks(){
+        return this.todos && this.todos.length
+        ? this.todos.filter(todo => !todo.done)
+        : [];
+    }
+
+    get completedTasks(){
+        return this.todos && this.todos.length
+        ? this.todos.filter(todo => todo.done)
+        : [];
     }
 }
