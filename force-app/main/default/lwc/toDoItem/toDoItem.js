@@ -19,7 +19,6 @@ export default class ToDoItem extends LightningElement {
             console.log("Item update sucessfully"); 
             const updateEvent = new CustomEvent("update");
             this.dispatchEvent(updateEvent);
-
         })
         .catch(error => {
             console.error("Error in update ", error);
