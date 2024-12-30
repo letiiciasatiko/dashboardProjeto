@@ -1,6 +1,6 @@
+import { LightningElement, api } from 'lwc';
 import deleteTodo from '@salesforce/apex/toDoController.deleteTodo';
 import updateTodo from '@salesforce/apex/toDoController.updateTodo';
-import { LightningElement, api } from 'lwc';
 
 export default class ToDoItem extends LightningElement {
     @api todoId;
@@ -16,10 +16,13 @@ export default class ToDoItem extends LightningElement {
 
         updateTodo({payload: JSON.stringify(todo)})
         .then(result => {
-            console.log('Item update sucessfully'); 
+            console.log("Item update sucessfully"); 
+            const updateEvent = new CustomEvent("update");
+            this.dispatchEvent(updateEvent);
+
         })
         .catch(error => {
-            console.error('Error in update ', error);
+            console.error("Error in update ", error);
         });
     }
     
@@ -27,6 +30,8 @@ export default class ToDoItem extends LightningElement {
         deleteTodo({todoId: this.todoId})
         .then(result => {
             console.log("Item deleted sucessfully");
+            const deleteEvent = new CustomEvent("delete");
+            this.dispatchEvent(deleteEvent);
         })
         .catch(error => {
             console.error("Error in delete ", error);
