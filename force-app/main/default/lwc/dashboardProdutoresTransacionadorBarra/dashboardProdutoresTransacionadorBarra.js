@@ -2,7 +2,7 @@ import { LightningElement, wire } from 'lwc';
 import getProdutoresCount from '@salesforce/apex/dashboardController.getProdutoresCount';
 
 export default class DashboardProdutoresCount extends LightningElement {
-    produtorCount;
+    produtorCount = 0;
 
     @wire(getProdutoresCount)
     wiredProdutoresCount({ error, data }){
