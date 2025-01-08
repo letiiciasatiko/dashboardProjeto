@@ -11,12 +11,5 @@ export default class DashboardProdutoresCount extends LightningElement {
         }else if(error){
             console.error(error);
         }
-
-        this.chartConfiguration = {
-            type: 'doughnut',
-            data: {
-
-            }
-        }
     }
 }
