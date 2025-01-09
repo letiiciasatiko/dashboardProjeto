@@ -6,12 +6,15 @@
                 variant="bare"></lightning-button-icon>
         </lightning-layout-item>
 
-        <lightning-layout-item class="">
+        <!-- <lightning-layout-item class="">
             <p>{produtorCount}</p>
-        </lightning-layout-item>
+        </lightning-layout-item> -->
 
-        <lightning-layout-item>
-            <canvas lwc:dom="manual" class="chart"></canvas>
+        <canvas if:true={produtorCount.length}></canvas>
+
+        <!-- Exibir mensagem de erro caso ocorra -->
+        <lightning-layout-item if:true={error}>
+            <p class="slds-text-color_error">Erro ao carregar os dados: {error.message}</p>
         </lightning-layout-item>
 
     </div>
