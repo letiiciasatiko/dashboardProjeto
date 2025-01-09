@@ -9,12 +9,12 @@ export default class DashboardProdutoresNaoVisitaveisIndicadorNumerico extends L
 
 
 
-    // @wire(getNaoVisitaveis)
-    // wiredNaoVisitaveisCount({ error, data }){
-    //     if(data){
-    //         this.naoVisitCount = data;
-    //     }else if(error){
-    //         console.error(error);
-    //     }
-    // }
+    @wire(getNaoVisitaveis)
+    wiredNaoVisitaveisCount({ error, data }){
+        if(data){
+            this.naoVisitCount = data;
+        }else if(error){
+            console.error(error);
+        }
+    }
 }

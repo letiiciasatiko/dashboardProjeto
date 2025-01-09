@@ -10,12 +10,5 @@
             <p>{produtorCount}</p>
         </lightning-layout-item> -->
 
-        <canvas if:true={produtorCount.length}></canvas>
-
-        <!-- Exibir mensagem de erro caso ocorra -->
-        <lightning-layout-item if:true={error}>
-            <p class="slds-text-color_error">Erro ao carregar os dados: {error.message}</p>
-        </lightning-layout-item>
-
     </div>
 </template>
