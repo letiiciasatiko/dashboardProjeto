@@ -33,8 +33,21 @@ public with sharing class dashboardController {
                                                 OR Producer__r.FRM_TipTra_CodTra__c LIKE '6%')];
 
         Integer totalVisit = (Integer)resultado[0].get('expr0');
+        return totalVisit;
+    }
 
-        return 0;
+    @AuraEnabled(cacheable=true)
+    public static Integer getNaoVisitaveis(){
+        List<AggregateResult> resultado = [SELECT COUNT(Id) 
+                                           FROM Account 
+                                           WHERE IsVisitable__c = 'ISVISITABLE_NAO' 
+                                            AND IsActive__c = true 
+                                            AND RecordTypeId = '0125A000001iUCPQA2' 
+                                            AND (FRM_TipTra_CodTra__c LIKE '1%' 
+                                              OR FRM_TipTra_CodTra__c LIKE '6%')];
+
+    Integer totalNaoVisit = (Integer)resultado[0].get('expr0');
+    return totalNaoVisit;                                              
     }
 }
 

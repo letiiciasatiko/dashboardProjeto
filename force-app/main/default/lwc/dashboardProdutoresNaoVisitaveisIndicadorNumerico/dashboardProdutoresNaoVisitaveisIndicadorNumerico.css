@@ -1,0 +1,9 @@
+.blocoUm {
+    box-shadow:0px 2px 5px silver; 
+    width: 12vw; 
+    height: 203px; 
+    font-weight:400; 
+    font-size: 1rem; 
+    font-family: SalesforceSans-Regular, Arial, sans-serif; 
+    background-color: #ffff;
+}
