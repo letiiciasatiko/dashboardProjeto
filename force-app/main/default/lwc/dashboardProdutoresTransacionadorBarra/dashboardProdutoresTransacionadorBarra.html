@@ -6,9 +6,10 @@
                 variant="bare"></lightning-button-icon>
         </lightning-layout-item>
 
-        <!-- <lightning-layout-item class="">
-            <p>{produtorCount}</p>
-        </lightning-layout-item> -->
-
+        <template for:each={produtorCount} for:item="teste">
+            <p key={produtorCount.expr0}>{teste.expr0}</p>
+        </template>
     </div>
+
+    
 </template>

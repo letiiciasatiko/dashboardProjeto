@@ -37,8 +37,5 @@
     "**/{aura,lwc}/**/*.js": [
       "eslint"
     ]
-  },
-  "dependencies": {
-    "chart.js": "^4.0.1"
   }
 }
