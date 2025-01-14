@@ -1,7 +1,7 @@
-import { LightningElement, api } from 'lwc';
-import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
-import chartjs from '@salesforce/resourceUrl/ChartJs';
+import { LightningElement } from 'lwc';
+import { loadScript } from 'lightning/platformResourceLoader';
+import ChartJs from '@salesforce/resourceUrl/ChartJs';
 
 export default class Dashboard extends LightningElement {
-
+    
 }

@@ -6,8 +6,9 @@
                 variant="bare"></lightning-button-icon>
         </lightning-layout-item>
 
-        <lightning-layout-item>
-            <p>{naoVisitCount}</p>
-        </lightning-layout-item>
+        <template for:each={naoVisitCount} for:item="teste">
+            <p key={naoVisitCount.Tipo}>{teste.Tipo}</p>
+            <p key={naoVisitCount.expr0}>{teste.expr0}</p>
+        </template>
     </div>
 </template>
